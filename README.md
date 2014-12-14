@@ -8,7 +8,7 @@ Usos
 
 usage: instalador.py [-h] [-d] [-m] [-a] [-s] [-g] [-w] [-j] [-o] [-t]
 
-optional arguments:
+optional arguments
 -h, --help        show this help message and exit
 -d, --desarrollo  Activa la instalación de: ['geany', 'git', 'python3', 'vim', 'build-essential', 'python-dev', 'python-pip']
 -m, --multimedia  Activa la instalación de: ['vlc', 'audacity']
