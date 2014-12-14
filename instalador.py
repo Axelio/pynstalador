@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import sys
 import argparse
 import os
 
@@ -15,7 +14,7 @@ __status__ = "Development"
 AUDIO = ('clementine',)
 
 MULTIMEDIA = ('vlc',
-    'audacity')
+              'audacity')
 
 DESARROLLO = ('geany',
               'git',
@@ -27,23 +26,25 @@ DESARROLLO = ('geany',
               )
 
 OFICINA = ('libreoffice',
-    'dia'
-    )
+           'dia'
+           )
 
 SERVIDOR = ('postgresql',
-    'postgresql-server-dev-all',
-    'ssh',
-    'openssh-client'
-    )
+            'postgresql-server-dev-all',
+            'ssh',
+            'openssh-client'
+            )
 
 GNOME = ('gnome',)
 
 WEB = ('iceweasel',
-    'icedove',)
+       'icedove'
+       )
 
 JUEGOS = ('0ad',
-    'armagetronad',
-)
+          'armagetronad',
+          )
+
 
 def add_apps(apps):
     list_app = ''
@@ -56,52 +57,60 @@ def add_apps(apps):
 def __main__():
     parser = argparse.ArgumentParser()
     parser.add_argument('-d', '--desarrollo', dest='desarrollo',
-        action='store_true',
-        help='Activa la instalación de: %s' % ([x for x in DESARROLLO]))
+                        action='store_true',
+                        help='Activa la instalación de: %s' % (
+                            [x for x in DESARROLLO]))
     parser.add_argument('-m', '--multimedia', dest='multimedia',
-        action='store_true',
-        help='Activa la instalación de: %s' % ([x for x in MULTIMEDIA]))
+                        action='store_true',
+                        help='Activa la instalación de: %s' % (
+                            [x for x in MULTIMEDIA]))
     parser.add_argument('-a', '--audio', dest='audio', action='store_true',
-        help='Activa la instalación de: %s' % ([x for x in AUDIO]))
+                        help='Activa la instalación de: %s' % (
+                            [x for x in AUDIO]))
     parser.add_argument('-s', '--servidor', dest='servidor',
-        action='store_true',
-        help='Activa la instalación de: %s' % ([x for x in SERVIDOR]))
+                        action='store_true',
+                        help='Activa la instalación de: %s' % (
+                            [x for x in SERVIDOR]))
     parser.add_argument('-g', '--gnome', dest='gnome', action='store_true',
-        help='Activa la instalación de: %s' % ([x for x in GNOME]))
+                        help='Activa la instalación de: %s' % (
+                            [x for x in GNOME]))
     parser.add_argument('-w', '--web', dest='web', action='store_true',
-        help='activa la instalación de: %s' % ([x for x in WEB]))
+                        help='activa la instalación de: %s' % (
+                            [x for x in WEB]))
     parser.add_argument('-j', '--juegos', dest='juegos', action='store_true',
-        help='activa la instalación de: %s' % ([x for x in JUEGOS]))
+                        help='activa la instalación de: %s' % (
+                            [x for x in JUEGOS]))
     parser.add_argument('-o', '--oficina', dest='oficina', action='store_true',
-        help='activa la instalación de: %s' % ([x for x in OFICINA]))
+                        help='activa la instalación de: %s' % (
+                            [x for x in OFICINA]))
     parser.add_argument('-t', '--todas', dest='todas', action='store_true',
-        help='activa la instalación de todas las aplicaciones listadas')
+                        help='activa la instalación de todas \
+                                las aplicaciones listadas')
 
     args = parser.parse_args()
-    
     apps = ''
-    if args.desarrollo or args.todas:
+    if args.desarrollo is True or args.todas is True:
         apps = apps + add_apps(DESARROLLO)
 
-    if args.multimedia or args.todas:
+    if args.multimedia is True or args.todas is True:
         apps = apps + add_apps(MULTIMEDIA)
 
-    if args.audio or args.todas:
+    if args.audio is True or args.todas is True:
         apps = apps + add_apps(AUDIO)
 
-    if args.servidor or args.todas:
+    if args.servidor is True or args.todas is True:
         apps = apps + add_apps(SERVIDOR)
 
-    if args.gnome or args.todas:
+    if args.gnome is True or args.todas is True:
         apps = apps + add_apps(GNOME)
 
-    if args.web or args.todas:
+    if args.web is True or args.todas is True:
         apps = apps + add_apps(WEB)
 
-    if args.juegos or args.todas:
+    if args.juegos is True or args.todas is True:
         apps = apps + add_apps(JUEGOS)
 
-    if args.oficina or args.todas:
+    if args.oficina is True or args.todas is True:
         apps = apps + add_apps(OFICINA)
 
     if apps is '':
@@ -109,7 +118,7 @@ def __main__():
 
     else:
         respuesta = False
-        while respuesta == False:
+        while respuesta is False:
             print("Se instalarán: %s" % (apps))
             respuesta = input("¿Ud confirma esto? (S/n): ")
 
