@@ -32,7 +32,9 @@ DESARROLLO = ('geany',
               )
 
 OFICINA = ('libreoffice',
-           'dia'
+           'dia',
+           'nfs-common',
+           'dcfldd',
            )
 
 SERVIDOR = ('postgresql',
