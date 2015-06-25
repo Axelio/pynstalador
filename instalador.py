@@ -1,27 +1,33 @@
-#!/usr/bin/python3
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import argparse
 import os
 
 __author__ = "Axel Díaz"
 __credits__ = ["Axel Díaz"]
 __license__ = "GPL"
-__version__ = "1.0.0"
+__version__ = "1.1.1"
 __maintainer__ = "Axel Díaz"
 __email__ = "diaz.axelio@gmail.com"
 __status__ = "Development"
 
 
-AUDIO = ('clementine',)
+AUDIO = ('clementine',
+         'moc'
+        )
 
 MULTIMEDIA = ('vlc',
+              'clementine',
               'audacity')
 
 DESARROLLO = ('geany',
               'git',
               'python3',
+              'gource',
               'vim',
               'build-essential',
               'python-dev',
+              'tmux',
               'python-pip'
               )
 
@@ -32,17 +38,28 @@ OFICINA = ('libreoffice',
 SERVIDOR = ('postgresql',
             'postgresql-server-dev-all',
             'ssh',
-            'openssh-client'
+            'openssh-client',
+            'apache2',
             )
+
+CRIPTOGRAFIA = ('pcscd',
+                'libusb-dev',
+                'libusb++-0.1-4c2',
+                'libccid',
+                'libpcsclite1',
+                'libpcsclite-dev',
+                'libpcsc-perl',
+                'pcsc-tools',
+                )
 
 GNOME = ('gnome',)
 
 WEB = ('iceweasel',
-       'icedove'
+       'icedove',
+       'w3m',
        )
 
-JUEGOS = ('0ad',
-          'armagetronad',
+JUEGOS = ('armagetronad',
           )
 
 
@@ -67,6 +84,10 @@ def __main__():
     parser.add_argument('-a', '--audio', dest='audio', action='store_true',
                         help='Activa la instalación de: %s' % (
                             [x for x in AUDIO]))
+    parser.add_argument('-c', '--criptografia', dest='criptografia',
+                        action='store_true',
+                        help='Activa la instalación de: %s' % (
+                            [x for x in CRIPTOGRAFIA]))
     parser.add_argument('-s', '--servidor', dest='servidor',
                         action='store_true',
                         help='Activa la instalación de: %s' % (
@@ -98,6 +119,9 @@ def __main__():
     if args.audio is True or args.todas is True:
         apps = apps + add_apps(AUDIO)
 
+    if args.criptografia is True or args.todas is True:
+        apps = apps + add_apps(CRIPTOGRAFIA)
+
     if args.servidor is True or args.todas is True:
         apps = apps + add_apps(SERVIDOR)
 
@@ -114,24 +138,24 @@ def __main__():
         apps = apps + add_apps(OFICINA)
 
     if apps is '':
-        print("No se introdujo ninguna opción.")
+        print "No se introdujo ninguna opción. Ejecute la opción -h para más ayuda."
 
     else:
         respuesta = False
         while respuesta is False:
-            print("Se instalarán: %s" % (apps))
-            respuesta = input("¿Ud confirma esto? (S/n): ")
+            print "Se instalarán: %s" % (apps)
+            respuesta = raw_input("¿Ud confirma esto? (S/n): ")
 
             if respuesta.upper() == 'S':
                 respuesta = True
                 os.system("su -c 'aptitude install %s'" % (apps))
                 pass
             elif respuesta.upper() == 'N':
-                print("Instalación cancelada.")
+                print "Instalación cancelada."
                 pass
             else:
                 respuesta = False
-                print("Respuesta inválida.")
+                print "Respuesta inválida."
 
 
 __main__()
