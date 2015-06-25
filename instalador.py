@@ -56,8 +56,11 @@ CRIPTOGRAFIA = ('pcscd',
 GNOME = ('gnome',)
 
 WEB = ('iceweasel',
+       'iceweasel-l10n-es-es',
        'icedove',
+       'icedove-l10n-es-es',
        'w3m',
+       'irssi',
        )
 
 JUEGOS = ('armagetronad',
