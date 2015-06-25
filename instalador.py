@@ -50,6 +50,7 @@ CRIPTOGRAFIA = ('pcscd',
                 'libpcsclite-dev',
                 'libpcsc-perl',
                 'pcsc-tools',
+                'openssl',
                 )
 
 GNOME = ('gnome',)
