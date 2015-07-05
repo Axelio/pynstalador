@@ -31,7 +31,10 @@ DESARROLLO = ('geany',
               'python-pip'
               )
 
+
+
 OFICINA = ('libreoffice',
+           'libreoffice-l10n-es',
            'dia',
            'nfs-common',
            'dcfldd',
@@ -42,6 +45,20 @@ SERVIDOR = ('postgresql',
             'ssh',
             'openssh-client',
             'apache2',
+            'file-roller',
+            'rar',
+            'unrar',
+            'p7zip',
+            'p7zip-full',
+            'p7zip-rar',
+            'unace',
+            'zip',
+            'unzip',
+            'bzip2',
+            'arj',
+            'lhasa',
+            'lzip',
+            'xz-utils',
             )
 
 CRIPTOGRAFIA = ('pcscd',
@@ -55,7 +72,12 @@ CRIPTOGRAFIA = ('pcscd',
                 'openssl',
                 )
 
-GNOME = ('gnome',)
+GNOME = ('gnome',
+         'gnome-tweak-tool',
+         'gnome-shell-extensions',
+         'alacarte',
+         'gDesklets',
+         )
 
 WEB = ('iceweasel',
        'iceweasel-l10n-es-es',
@@ -67,6 +89,44 @@ WEB = ('iceweasel',
 
 JUEGOS = ('armagetronad',
           )
+
+FUENTES = ('ttf-freefont',
+           'ttf-mscorefonts-installer',
+           'ttf-bitstream-vera',
+           'ttf-dejavu ttf-liberation',
+           'fonts-cantarell',
+           'fonts-liberation',
+           'fonts-noto',
+           'ttf-mscorefonts-installer',
+           'ttf-dejavu',
+           'fonts-stix',
+           'otf-stix',
+           'fonts-oflb-asana-math',
+           'fonts-mathjax',
+           )
+
+CODECS = ('ffmpeg2theora',
+          'ffmpegthumbnailer',
+          'gstreamer0.10-plugins-base',
+          'gstreamer0.10-plugins-good',
+          'gstreamer0.10-plugins-bad',
+          'gstreamer0.10-plugins-ugly',
+          'gstreamer0.10-fluendo-mp3',
+          'gstreamer0.10-alsa',
+          'gstreamer0.10-pulseaudio',
+          'gstreamer1.0-clutter',
+          'gstreamer1.0-plugins-base',
+          'gstreamer1.0-nice',
+          'gstreamer1.0-plugins-good',
+          'gstreamer1.0-plugins-bad',
+          'gstreamer1.0-plugins-ugly',
+          'gstreamer1.0-fluendo-mp3',
+          'gstreamer1.0-alsa',
+          'gstreamer1.0-pulseaudio',
+          'gstreamer1.0-libav',
+          'gstreamer1.0-vaapi',
+          'libmatroska6',
+           )
 
 
 def add_apps(apps):
@@ -107,9 +167,15 @@ def __main__():
     parser.add_argument('-j', '--juegos', dest='juegos', action='store_true',
                         help='activa la instalación de: %s' % (
                             [x for x in JUEGOS]))
+    parser.add_argument('-f', '--fuentes', dest='fuentes', action='store_true',
+                        help='activa la instalación de: %s' % (
+                            [x for x in FUENTES]))
     parser.add_argument('-o', '--oficina', dest='oficina', action='store_true',
                         help='activa la instalación de: %s' % (
                             [x for x in OFICINA]))
+    parser.add_argument('-e', '--codecs', dest='codecs', action='store_true',
+                        help='activa la instalación de: %s' % (
+                            [x for x in CODECS]))
     parser.add_argument('-t', '--todas', dest='todas', action='store_true',
                         help='activa la instalación de todas \
                                 las aplicaciones listadas')
@@ -140,8 +206,14 @@ def __main__():
     if args.juegos is True or args.todas is True:
         apps = apps + add_apps(JUEGOS)
 
+    if args.fuentes is True or args.todas is True:
+        apps = apps + add_apps(FUENTES)
+
     if args.oficina is True or args.todas is True:
         apps = apps + add_apps(OFICINA)
+
+    if args.codecs is True or args.todas is True:
+        apps = apps + add_apps(CODECS)
 
     if apps is '':
         print "No se introdujo ninguna opción. Ejecute la opción -h para más ayuda."
