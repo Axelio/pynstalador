@@ -73,6 +73,7 @@ CRIPTOGRAFIA = ('pcscd',
                 )
 
 GNOME = ('gnome',
+         'gnome-common',
          'gnome-tweak-tool',
          'gnome-shell-extensions',
          'alacarte',
