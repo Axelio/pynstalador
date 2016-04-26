@@ -41,6 +41,7 @@ OFICINA = ('libreoffice',
            )
 
 SERVIDOR = ('postgresql',
+            'postgresql-contrib',
             'postgresql-server-dev-all',
             'ssh',
             'openssh-client',
