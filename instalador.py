@@ -18,6 +18,7 @@ AUDIO = ('clementine',
 
 MULTIMEDIA = ('vlc',
               'clementine',
+              'kazam',
               'audacity')
 
 DESARROLLO = ('geany',
